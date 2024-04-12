@@ -31,7 +31,10 @@
             top : 0;
             background : white;
             z-index : 99;
+            height: 55px;
         }
+
+
 
         .flex{
             display : flex;
@@ -183,7 +186,7 @@
             background-position : center;
             background-repeat : no-repeat;
             display  : flex;
-            min-height : calc(100vh - 130px);
+            height : calc(100vh - 125px)
 
         }
 
@@ -283,9 +286,8 @@
         }
 
         button[type="submit"] svg{
-            min-width : 17px;
-            height : 17px;
-            transform : translateY(1px)
+            min-width : 16px;
+            height : 16px;
         }
 
 
@@ -320,7 +322,12 @@
             padding: 20px 0;
             position: fixed;
             bottom: 0;
+            height : 70px;
             width: 100%;
+        }
+
+        .footer p{
+            margin-bottom : 0;
         }
 
         .hide-alert{
@@ -374,85 +381,88 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class = "wrapper flex">
+
+        <header>
+            <nav>
+                <div class = "wrapper flex">
+                    <div class = "logo-container">
+                        <span><i>WordPress</i> Detector</span>
+                    </div>
+                    
+                    <ul class = "flex">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a  href="https://lb-codex.netlify.app">Contact</a></li>
+                    </ul>
+        
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+    
+            <div class = "mobile-menu">
                 <div class = "logo-container">
                     <span><i>WordPress</i> Detector</span>
                 </div>
-                
+    
                 <ul class = "flex">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a  href="https://lb-codex.netlify.app">Contact</a></li>
                 </ul>
+            </div>
+        </header>
     
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+        <main>
+            <div class="tool-container">
+                <h1>WordPress Detector</h1>
+                <p class = "tool-subtext">Want to know if a website is built with Wordpress? Well you are in the right place, paste in the url of the website to find out</p>
+                <form class = "wordpress-form" id="wordpress-form" method= "GET">
+                    {% csrf_token %}
+                    <div class = "link-logo">
+                        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                        <svg class= "link-svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.197 3.35462C16.8703 1.67483 19.4476 1.53865 20.9536 3.05046C22.4596 4.56228 22.3239 7.14956 20.6506 8.82935L18.2268 11.2626M10.0464 14C8.54044 12.4882 8.67609 9.90087 10.3494 8.22108L12.5 6.06212" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M13.9536 10C15.4596 11.5118 15.3239 14.0991 13.6506 15.7789L11.2268 18.2121L8.80299 20.6454C7.12969 22.3252 4.55237 22.4613 3.0464 20.9495C1.54043 19.4377 1.67609 16.8504 3.34939 15.1706L5.77323 12.7373" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <input placeholder = "Enter Website URL" type="text" id="url" name="url" required>
+                    <button class = "tool-submit-btn flex" type="submit">
+                        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Search</span>
+                    </button>
+                </form>
+                <!--<div id="result">
+                    <div>
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>-->
+                {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{ message }}</strong> .
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>   
+                  </div>
+                  {% endfor %}
             </div>
-        </nav>
-
-        <div class = "mobile-menu">
-            <div class = "logo-container">
-                <span><i>WordPress</i> Detector</span>
-            </div>
-
-            <ul class = "flex">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a  href="https://lb-codex.netlify.app">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <main>
-        <div class="tool-container">
-            <h1>WordPress Detector</h1>
-            <p class = "tool-subtext">Want to know if a website is built with Wordpress? Well you are in the right place, paste in the url of the website to find out</p>
-            <form class = "wordpress-form" id="wordpress-form" method= "GET">
-                {% csrf_token %}
-                <div class = "link-logo">
-                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                    <svg class= "link-svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.197 3.35462C16.8703 1.67483 19.4476 1.53865 20.9536 3.05046C22.4596 4.56228 22.3239 7.14956 20.6506 8.82935L18.2268 11.2626M10.0464 14C8.54044 12.4882 8.67609 9.90087 10.3494 8.22108L12.5 6.06212" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M13.9536 10C15.4596 11.5118 15.3239 14.0991 13.6506 15.7789L11.2268 18.2121L8.80299 20.6454C7.12969 22.3252 4.55237 22.4613 3.0464 20.9495C1.54043 19.4377 1.67609 16.8504 3.34939 15.1706L5.77323 12.7373" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <input placeholder = "Enter Website URL" type="text" id="url" name="url" required>
-                <button class = "tool-submit-btn flex" type="submit">
-                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                    <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Search</span>
-                </button>
-            </form>
-            <!--<div id="result">
-                <div>
-                    {% if messages %}
-                        <ul class="messages">
-                            {% for message in messages %}
-                                <li>{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>-->
-            {% for message in messages %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>{{ message }}</strong> .
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>   
-              </div>
-              {% endfor %}
-        </div>
+    
+    
+        </main>
 
         <footer class="footer">
             <p>&copy; 2024 WordPress Detector</p>
         </footer>
-    </main>
 
     <script>
         const hamburger = document.querySelector(".hamburger")
