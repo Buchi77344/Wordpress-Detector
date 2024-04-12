@@ -6,6 +6,10 @@ from django.contrib import messages
 def detect(request):
     if 'url' in request.GET:
         url = request.GET['url']
+        if "https" not in url:
+            "https://" + url
+        else:
+            pass
         try:
             response = requests.get(url)
             if response.status_code == 200:
@@ -36,7 +40,7 @@ def detect(request):
             else:
                 messages.error(request, f'Failed to fetch URL: {response.status_code}')
         except Exception as e:
-            messages.error(request, f'An error occurred: you are offline')
+            messages.error(request, f' make sure you add https:// before your domain "')
     else:
         messages.error(request, 'Missing URL parameter')
 
