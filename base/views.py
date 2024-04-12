@@ -30,9 +30,9 @@ def detect(request):
                 # Add more detection rules as needed
 
                 if wordpress_detected:
-                    messages.success(request, 'WordPress detected!')
+                    messages.success(request, 'This Website Was Built With WordPress.')
                 else:
-                    messages.warning(request, 'WordPress not detected.')
+                    messages.warning(request, 'This Website Is Not Using WordPress.')
             else:
                 messages.error(request, f'Failed to fetch URL: {response.status_code}')
         except Exception as e:
