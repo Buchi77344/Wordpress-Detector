@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Detector</title>
+    <style>
+        {% comment %} body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Add your background image URL here */
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        } {% endcomment %}
+
+        *{
+            box-sizing : border-box;
+            font-family : var(--font-family)
+        }
+
+        :root{
+            --font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        }
+
+        body {
+            margin : 0;
+            padding : 0;
+            font-family : var(--font-family)
+        }
+
+        {% comment %} .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        } {% endcomment %}
+
+        {% comment %} .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity of the background */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease-out;
+        } {% endcomment %}
+
+    
+ 
+
+        
+
+        nav{
+            position : sticky;
+            top : 0;
+            background : white;
+            padding : 20px 0
+        }
+
+        .flex{
+            display : flex;
+            align-items : center;
+        }
+
+        .wrapper{
+            width : 90%;
+            max-width : 1200px;
+            margin : auto;
+        }
+
+        nav .wrapper.flex{
+            justify-content : space-between;
+        }
+        
+
+        ul{
+            margin: 0;
+            padding : 0;
+        }
+
+        li{
+            list-style : none;
+
+        }
+
+        a{
+            text-decoration : none;
+            color : black;
+        }
+
+        svg{
+            width : 30px;
+            height : 30px;
+        }
+
+        svg path{
+            stroke : white;
+        }
+
+        nav ul.flex{
+            gap : 20px;
+        }
+
+        i{
+            font-style : normal;
+            font-weight : bold;
+
+        }
+
+        main{
+            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+            background-size: cover;
+            background-position : center;
+            background-repeeat : no-repeat;
+            display  : grid;
+            place-items : center;
+            min-height : 100vh;
+
+        }
+
+        .tool-container{
+            padding: 20px 30px;
+            width: 90%;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            border-radius: 20px;
+            display: flex;
+            height: 60%;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tool-container h1 {
+            text-align: center;
+            margin : 0 0 20px 0;
+            color : rgba(255,255,255,.9);
+            font-size : clamp(2rem, 4.5vw, 4rem);
+            margin : 0 0 10px 0;
+
+        }
+
+        .tool-container p{
+            color : rgba(255,255,255,.8);
+            text-align : center;
+            margin : 0 0 0 0;
+
+        }
+
+        .wordpress-form{
+            display: flex;
+            padding: 16px 15px;
+            background: rgba(255, 255, 255, .3);
+            margin-top: 30px
+        }
+
+        .wordpress-form svg{
+            width : 20px;
+            height : 20px;
+        }
+
+        
+        .link-logo{
+            width : 5%;
+            display : flex;
+            align-items : center;
+            justify-content : center;
+            background : white;
+            border-right : 1px solid rgba(0,0,0,.2);
+
+        }
+
+        svg.link-svg{
+            transform : rotate(272deg);
+
+        }
+
+        svg.link-svg path{
+            stroke :  #007bff;
+        }
+
+        
+
+        input[type="text"] {
+            width: 85%; /* Make the input width 100% */
+            display : inline-block;
+            padding: 10px;
+            border: 1px solid #ccc;
+            outline : none;
+            border : none;
+        }
+
+        input[type="text"]:focus-visible{
+            outline : 2px solid #0000ffcf;
+        }
+
+        button[type="submit"] {
+            width: 10%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            font-size: 1rem;
+            align-items: center;
+            gap: 5px;
+            display: flex;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-top-right-radius : 5px;
+            border-bottom-right-radius : 5px;
+
+        }
+
+        button[type="submit"] svg{
+            width : 17px;
+            height : 17px;
+            transform : translateY(1px)
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class = "wrapper flex">
+            <div class = "logo-container">
+                <span><i>WordPress</i> Detector</span>
+            </div>
+            
+            <ul class = "flex">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="tool-container">
+            <h1>WordPress Detector</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, error?</p>
+            <form class = "wordpress-form" id="wordpress-form" method= "GET">
+                {% csrf_token %}
+                <div class = "link-logo">
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg class= "link-svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.197 3.35462C16.8703 1.67483 19.4476 1.53865 20.9536 3.05046C22.4596 4.56228 22.3239 7.14956 20.6506 8.82935L18.2268 11.2626M10.0464 14C8.54044 12.4882 8.67609 9.90087 10.3494 8.22108L12.5 6.06212" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13.9536 10C15.4596 11.5118 15.3239 14.0991 13.6506 15.7789L11.2268 18.2121L8.80299 20.6454C7.12969 22.3252 4.55237 22.4613 3.0464 20.9495C1.54043 19.4377 1.67609 16.8504 3.34939 15.1706L5.77323 12.7373" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <input placeholder = "Enter Website URL" type="text" id="url" name="url" required>
+                <button class = "tool-submit-btn flex" type="submit">
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </form>
+            <div id="result">
+                <div>
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 WordPress Detector</p>
+        </footer>
+    </main>
+</body>
+</html>
